@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HangMan</title>
+    <link rel="stylesheet" href="HangMan.css">
+</head>
+
+<body>
+    <main class="main">
+        <h1>- Let`s play the HangMan -</h1>
+        <h2>" Hangman is a guessing game for two or more players.
+            One player thinks of a word, phrase or sentence and the other(s)
+            tries to guess it by suggesting letters within a certain number of guesses. "
+        </h2>
+        <h2 id="intoText">Please enter below the word, phrase or sentence that u want to play with.</h2>
+    </main>
+    <input type="text" id="inputWord" class="input">
+    <button onclick="preStart()" id="addWord" class="addWord">Select the word/ phrase / sentence.</button>
+    <div class="script">
+        <h1 id="hangManWord"></h1>
+        <script src="HangMan.js"></script>
+    </div>
+    <p id="result" class="result"></p>
+    <div id="reset"></div>
+</body>
+
+</html>

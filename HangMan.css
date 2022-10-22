@@ -1,0 +1,66 @@
+.main {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.intoText {
+    text-align: center;
+    text-size-adjust: 30px;
+}
+
+body {
+    text-align: center;
+}
+
+.input {
+    height: 20px;
+    text-align: center;
+    text-size-adjust: 20px;
+    border-radius: 8px;
+}
+
+.addWord {
+    height: 26px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.script {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.startButton {
+    height: 60px;
+    width: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: lightgreen;
+    font-size: larger;
+}
+
+.alphabet {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+.result {
+    text-align: center;
+    font-size: 40px;
+    text-size-adjust: 40px;
+}
+
+.resetBtn {
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    height: 60px;
+    width: 120px;
+    margin-left: 5px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+}
