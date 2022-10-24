@@ -1,45 +1,48 @@
-let inputWord;
-let alphabetWord;
-var guessWord = "";
-let mistakes = 0;
+let inputText;
+let letter;
+var guessText = "";
+let guesses = 0;
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-function checkText(inputWord) {
-    for (let i = 0; i < inputWord.length; ++i) {
-        if (!inputWord[i].match(/[a-z]/i)) {
+function checkText(inputText) {
+    for (let i = 0; i < inputText.length; ++i) {
+        if (inputText[i] == " ") {
+            ++i;
+        }
+        if (!inputText[i].match(/[a-z]/i)) {
             return false;
         }
     }
     return true;
 }
 
-function preStart() {
-    inputWord = document.getElementById("inputWord").value;
-    inputWord = inputWord.toUpperCase();
-    if (inputWord != "" && checkText(inputWord) == true) {
+function addText() {
+    inputText = document.getElementById("inputText").value;
+    inputText = inputText.toUpperCase();
+    if (inputText != "" && checkText(inputText) == true) {
         let btn = document.createElement("button");
         btn.id = "startButton";
         btn.innerHTML = "Let`s start the game!";
         btn.className = "startButton";
         document.body.appendChild(btn);
-        var input = document.getElementById("inputWord");
-        var addBtn = document.getElementById("addWord");
+        var input = document.getElementById("inputText");
+        var addBtn = document.getElementById("addText");
         var intoText = document.getElementById("intoText");
         input.parentNode.removeChild(input);
         addBtn.parentNode.removeChild(addBtn);
         intoText.parentNode.removeChild(intoText);
-        startButton.onclick = startGame;
+        startButton.onclick = addGuessingButtons;
     } else {
         alert("Please enter a valid text!");
     }
 }
 
-function startGame() {
-    for (let i = 0; i < inputWord.length; ++i) {
-        if (inputWord[i] == " ") {
-            guessWord += " ";
+function addGuessingButtons() {
+    for (let i = 0; i < inputText.length; ++i) {
+        if (inputText[i] == " ") {
+            guessText += " ";
         } else {
-            guessWord += "?";
+            guessText += "?";
         }
     }
     var startButton = document.getElementById("startButton");
@@ -52,42 +55,42 @@ function startGame() {
         btn.className = "alphabet";
         document.body.appendChild(btn);
         btn.onclick = function () {
-            alphabetWord = this.id;
-            HangMan();
+            letter = this.id;
+            HangManGame();
         }
     }
-    document.getElementById("result").innerHTML = guessWord + "/ " + inputWord.length + " letters";
-    document.getElementById("result").innerHTML += "/  " + mistakes + " out of 5 guesses";
+    document.getElementById("result").innerHTML = guessText + "/ " + inputText.length + " letters";
+    document.getElementById("result").innerHTML += "/  " + guesses + " out of 5 guesses";
 }
 
-function HangMan() {
-    let newWord = "";
-    document.getElementById(alphabetWord).disabled = true;
-    for (let i = 0; i < inputWord.length; ++i) {
-        if (alphabetWord == inputWord[i] && guessWord[i] == "?") {
-            newWord += inputWord[i];
-            document.getElementById(alphabetWord).style.backgroundColor = "lightgreen";
-        } else if (guessWord != "?") {
-            newWord += guessWord[i];
+function HangManGame() {
+    let newText = "";
+    document.getElementById(letter).disabled = true;
+    for (let i = 0; i < inputText.length; ++i) {
+        if (letter == inputText[i] && guessText[i] == "?") {
+            newText += inputText[i];
+            document.getElementById(letter).style.backgroundColor = "lightgreen";
+        } else if (guessText != "?") {
+            newText += guessText[i];
         } else {
-            newWord += "?";
+            newText += "?";
         }
     }
-    if (guessWord == newWord) {
-        ++mistakes;
+    if (guessText == newText) {
+        ++guesses;
     }
-    document.getElementById("result").innerHTML = newWord + " / " + inputWord.length + " letters";
-    document.getElementById("result").innerHTML += "/ " + mistakes + " out of 5 guesses";
-    guessWord = newWord;
-    if (mistakes == 5 || inputWord == guessWord) {
+    document.getElementById("result").innerHTML = newText + " / " + inputText.length + " letters";
+    document.getElementById("result").innerHTML += "/ " + guesses + " out of 5 guesses";
+    guessText = newText;
+    if (guesses == 5 || inputText == guessText) {
         for (let i = 0; i < 26; ++i) {
             document.getElementById(alphabet[i]).disabled = true;
         }
-        if (mistakes == 5) {
-            document.getElementById("result").innerHTML = "- " + inputWord + " - " + "GAME OVER!";
+        if (guesses == 5) {
+            document.getElementById("result").innerHTML = "- " + inputText + " - " + "GAME OVER!";
             document.getElementById("result").style.color = "red";
         } else {
-            document.getElementById("result").innerHTML = "- " + inputWord + " - " + "WINNER";
+            document.getElementById("result").innerHTML = "- " + inputText + " - " + "WINNER";
             document.getElementById("result").style.color = "green";
         }
         let btn = document.createElement("button");
