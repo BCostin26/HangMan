@@ -1,6 +1,6 @@
 let inputText;
 let letter;
-var guessText = "";
+let guessText = "";
 let guesses = 0;
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
